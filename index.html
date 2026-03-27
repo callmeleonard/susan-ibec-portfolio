@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Susan Chapman - IBEC Portfolio</title>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  line-height: 1.7;
+  background: #fefefe;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #4A90D9, #D4548A);
+  padding: 0 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+nav .nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+nav .nav-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+nav .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+nav .nav-links a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 20px;
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: #4A90D9;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin: 28px 0 12px;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+/* HOME / ABOUT */
+#home {
+  padding-top: 120px;
+  background: linear-gradient(160deg, #eef5fc 0%, #fdf5ec 50%, #fceef4 100%);
+}
+
+.about-grid {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+
+.headshot-wrapper {
+  flex-shrink: 0;
+}
+
+.headshot-wrapper img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #D4548A;
+  box-shadow: 0 8px 24px rgba(212,84,138,0.2);
+}
+
+.about-text h1 {
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #4A90D9, #D4548A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-text .subtitle {
+  font-size: 1.1rem;
+  color: #E8956A;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* MODULE SECTIONS */
+#module1 {
+  background: #eef4fb;
+}
+
+#module1 h2 {
+  color: #3a78b5;
+  border-color: #87CEEB;
+}
+
+#module1 h3 {
+  color: #4A90D9;
+}
+
+#modules23 {
+  background: #fdf3eb;
+}
+
+#modules23 h2 {
+  color: #c47840;
+  border-color: #F4A460;
+}
+
+#modules23 h3 {
+  color: #E8956A;
+}
+
+#module4 {
+  background: #fceef4;
+}
+
+#module4 h2 {
+  color: #b84078;
+  border-color: #D4548A;
+}
+
+#module4 h3 {
+  color: #D4548A;
+}
+
+#references {
+  background: #faf8ee;
+}
+
+#references h2 {
+  color: #a09040;
+  border-color: #F5E6A3;
+}
+
+/* ASSET CARDS */
+.asset-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.asset-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.asset-card a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.asset-icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.asset-icon.pdf {
+  background: linear-gradient(135deg, #4A90D9, #87CEEB);
+}
+
+.asset-card .asset-info h4 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.asset-card .asset-info p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.asset-card .asset-info .open-label {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4A90D9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* INLINE IMAGE */
+.inline-image {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.inline-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.inline-image .caption {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* PLACEHOLDER CARDS */
+.placeholder-card {
+  border: 2.5px dashed #ccc;
+  border-radius: 14px;
+  padding: 28px 24px;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.placeholder-card.orange {
+  background: #fef8f0;
+  border-color: #F4A460;
+  color: #c47840;
+}
+
+.placeholder-card.pink {
+  background: #fdf0f5;
+  border-color: #D4548A;
+  color: #b84078;
+}
+
+.placeholder-card.yellow {
+  background: #fdfaed;
+  border-color: #e0d080;
+  color: #a09040;
+}
+
+/* CONCEPT PILLARS */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.pillar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 4px solid #87CEEB;
+}
+
+.pillar .pillar-num {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: #4A90D9;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pillar h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #3a78b5;
+}
+
+.pillar p {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0;
+}
+
+/* FRAYER MODEL */
+.frayer-model {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  margin: 20px 0;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.frayer-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: #fff;
+  border: 4px solid #4A90D9;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3a78b5;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(74,144,217,0.2);
+}
+
+.frayer-center span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #666;
+  margin-top: 2px;
+}
+
+.frayer-quad {
+  padding: 24px;
+  min-height: 180px;
+}
+
+.frayer-quad h4 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.frayer-quad p, .frayer-quad li {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.frayer-quad ul {
+  list-style: none;
+  padding: 0;
+}
+
+.frayer-quad ul li::before {
+  content: "- ";
+}
+
+.frayer-tl { background: #e8f0fa; }
+.frayer-tl h4 { color: #3a78b5; }
+.frayer-tr { background: #eef8ee; }
+.frayer-tr h4 { color: #4a8a4a; }
+.frayer-bl { background: #fdf3eb; }
+.frayer-bl h4 { color: #c47840; }
+.frayer-br { background: #fceef4; }
+.frayer-br h4 { color: #b84078; }
+
+@media (max-width: 768px) {
+  .frayer-model {
+    grid-template-columns: 1fr;
+  }
+  .frayer-center {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+    grid-column: 1;
+    order: -1;
+  }
+}
+
+/* REFERENCE LIST */
+.ref-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 28px;
+}
+
+.ref-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #444;
+  padding-left: 24px;
+  text-indent: -24px;
+}
+
+.ref-list li:last-child {
+  border-bottom: none;
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  height: 6px;
+  background: linear-gradient(90deg, #4A90D9, #87CEEB, #F5E6A3, #F4A460, #D4548A);
+  border-radius: 3px;
+  margin: 0;
+}
+
+/* FOOTER */
+footer {
+  background: linear-gradient(135deg, #4A90D9, #D4548A);
+  color: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #4A90D9, #D4548A);
+    flex-direction: column;
+    padding: 12px 20px;
+    gap: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  nav .nav-links.open {
+    display: flex;
+  }
+
+  nav .nav-links a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .about-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .headshot-wrapper img {
+    width: 180px;
+    height: 180px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: 60px 16px;
+  }
+
+  #home {
+    padding-top: 100px;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-card a {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Susan Chapman</div>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#home" onclick="closeNav()">Home</a>
+      <a href="#module1" onclick="closeNav()">Module 1</a>
+      <a href="#modules23" onclick="closeNav()">Modules 2 &amp; 3</a>
+      <a href="#references" onclick="closeNav()">References</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME / ABOUT -->
+<section id="home">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="headshot-wrapper">
+        <img src="assets/headshot.jpeg" alt="Susan Chapman">
+      </div>
+      <div class="about-text">
+        <h1>Susan Chapman</h1>
+        <div class="subtitle">MYP Language and Literature Teacher - Hong Kong</div>
+        <p>I've been teaching English to junior secondary ESL learners in Hong Kong for over twenty years. My students are 11 and 12 year olds with English levels that range from near-fluent to barely conversational - sometimes in the same class of 33. I teach them poetic devices through Taylor Swift and BTS, because pop culture opens doors that Victorian poetry never will.</p>
+        <p>This portfolio captures my journey through the IB Educator's Certificate, where I've been exploring how MYP frameworks - concept-based learning, inquiry-driven planning, criterion-based assessment - can transform what I already do in the classroom. It's pushed me to think harder about why I teach the way I teach, and how to do it better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MODULE 1 -->
+<section id="module1">
+  <div class="section-inner">
+    <h2>Module 1: IB Pedagogy and Principles</h2>
+    <p>Module 1 explored the core IB philosophy, the Learner Profile, and Approaches to Learning (ATL). These foundational concepts underpin everything that follows in the MYP framework.</p>
+
+    <div class="asset-card">
+      <a href="assets/ib-elements-visual.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>IB Elements Visual</h4>
+          <p>A visual representation of how the MYP framework connects the Learner Profile, learner attributes, and international-mindedness. The student-centred approach drives inquiry-based learning across four programmes that are broad, balanced, connected, and conceptual.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="asset-card">
+      <a href="assets/metacognition-frayer.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>Metacognition Frayer Model</h4>
+          <p>Using the Frayer Model to explore metacognition through a personal lens - my own high school experience with the quadratic formula became a way to understand how learners recognize gaps in their understanding and develop strategies to address them.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="asset-card">
+      <a href="assets/module4-learning-engagements.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>Week 4 Learning Engagements 1-3</h4>
+          <p>Three learning engagements connecting IB principles to local practice. LE1 compares the MYP unit planner to local HK curriculum planning - similarities, differences, and critical questions about feasibility. LE2 uses a Venn diagram to compare the IB Subject Guide with the HK Junior Secondary English Language Curriculum Guide. LE3 applies a See/Think/Wonder routine to IB Access and Inclusion policies, questioning realistic implementation in diverse school settings.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <h3>Concept-Based Learning</h3>
+    <p>Concept-based learning organizes content and skills around broader concepts, generalizations, and principles. Four key pillars make it central to MYP:</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-num">1</span>
+        <h4>Focus Shift</h4>
+        <p>Thinking with and applying knowledge rather than memorizing.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">2</span>
+        <h4>Synergistic Thinking</h4>
+        <p>Factual and conceptual thinking interplay for deeper understanding.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">3</span>
+        <h4>Knowledge Transfer</h4>
+        <p>Concepts transfer across contexts where facts cannot.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">4</span>
+        <h4>Intellectual Development</h4>
+        <p>Connecting new knowledge to prior understanding to see patterns.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MODULES 2 & 3 -->
+<section id="modules23">
+  <div class="section-inner">
+    <h2>Modules 2 &amp; 3: MYP Language and Literature</h2>
+    <p>Modules 2 and 3 focused on planning and assessment within the MYP Language and Literature framework. I developed unit plans, designed learning tasks, and explored criterion-based assessment.</p>
+
+    <h3>Unit Design: Poetry and Songs</h3>
+    <p>Each year, I teach a largely self-designed unit on poetic devices to Year 7 students (aged 11-12) with widely varying English proficiency. Taylor Swift and BTS are far more relevant to students than Victorian poetry will ever be. Key concept: relationships - between words, sounds, meanings, and audiences. Related concepts: style and meaning. Conceptual statement: "The relationships between poetic devices dictate the artistic style and shape the intended meaning of communication."</p>
+
+    <h3>MYP Aims and ATL Connections</h3>
+
+    <div class="asset-card">
+      <a href="assets/aims-uses-links.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>MYP Aims, Uses, and ATL Links</h4>
+          <p>Mapping all eight MYP Language and Literature aims to specific classroom activities and ATL skill clusters - from graphic novel studies (Critical/Creative Thinking) to book clubs (Collaboration) to cross-curricular projects (Transfer).</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="inline-image">
+      <img src="assets/learning-engagement-week3.png" alt="Learning Engagement Week 3 Infographic">
+      <div class="caption">Exploring Approaches to Learning through Communication Skills (peer review workshops) and Research Skills (evaluating sources for credibility and bias).</div>
+    </div>
+
+    <div class="asset-card">
+      <a href="assets/unit-planner.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>MYP Unit Planner: Poetry and Songs</h4>
+          <p>A complete MYP unit planner for Year 2 Language and Literature. Key concept: Relationships. Related concepts: Style, Meaning, and Self-expression. Three learning engagements - Device Station Rotations, Style Swaps, and Soundscapes - each with formative assessments, differentiation strategies, and Learner Profile connections (Communicators, Principled, Open-minded, Reflective).</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+    <h3>Assessment Design</h3>
+
+    <div class="asset-card">
+      <a href="assets/summative-assessment-rubric.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>Summative Assessment: The "Atmosphere Architect" Challenge</h4>
+          <p>A GRASPS-based summative task where students role-play as Sound Designers for an Interactive Poetry App. They perform the same poem in two contrasting styles (Energetic/Happy vs. Mysterious/Calm) and create an "Atmosphere Map" explaining their poetic device choices. Includes task-specific rubrics for all four MYP criteria (A-D), levels 0-8.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="asset-card">
+      <a href="assets/formative-assessment-rubric.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>Formative Assessment Rubric: The Device Transplant</h4>
+          <p>A formative rubric for a task demonstrating how changing one "part" of a poem changes the "whole" meaning. Assesses Criterion A (Analysing), Criterion D (Using Language), and connection to the Statement of Inquiry, with columns for exceeding, proficient, and areas for growth.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="asset-card">
+      <a href="assets/self-reflective-checklist.pdf" target="_blank" rel="noopener">
+        <div class="asset-icon pdf">PDF</div>
+        <div class="asset-info">
+          <h4>Student Checklist and Reflection Template</h4>
+          <p>Student-friendly checklist for the Atmosphere Architect task (covering the Style Flip performance and the Atmosphere Map) plus an "Architect's Design Journal" reflection template with self-assessment prompts and Learner Profile connections.</p>
+          <span class="open-label">Open PDF &rarr;</span>
+        </div>
+      </a>
+    </div>
+    <h3>Assessment Task Design: Dracula</h3>
+    <div class="inline-image">
+      <img src="assets/assessment-brainstorming.png" alt="Assessment Task Brainstorming - Dracula Novel Study">
+      <div class="caption">Brainstorming notes for a Dracula novel study assessment. Students read the abridged text, research the historical context of Victorian-era superstition and beliefs, evaluate other treatments (including film adaptations), and develop a journal or diary from Dracula's point of view. The final product is peer-reviewed according to a rubric. ATL skills targeted: Communication, Self-management, and Research (information literacy).</div>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="section-divider"></div>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="section-inner">
+    <h2>References</h2>
+
+    <ul class="ref-list">
+      <li>Erickson, H. Lynn. "Concept-based teaching and learning." <em>IB Position Paper</em>, International Baccalaureate Organization, 2012.</li>
+      <li>Hunter, Marybeth and Kristen A. Mariotti. "AP vs. IB: A Practical Comparison." <em>The Foreign Service Journal</em>, American Foreign Service Association, June 2019.</li>
+      <li>International Baccalaureate. "Benefits of the PYP."</li>
+      <li>International Baccalaureate. "How the IB Diploma Programme prepares you for university."</li>
+      <li>International Baccalaureate. "Meanings and Practices of Inquiry-Based Teaching and Learning in the International Baccalaureate."</li>
+      <li>International Baccalaureate. "Middle Years Programme (MYP)."</li>
+      <li>International Baccalaureate. "The IB Career-related Programme."</li>
+      <li>International Baccalaureate. "What is an IB education?"</li>
+      <li>International Baccalaureate. (2022). <em>Access and inclusion policy</em>. Geneva, Switzerland: International Baccalaureate Organization.</li>
+      <li>International Baccalaureate. (2014, updated 2023). <em>Language and literature guide: Middle Years Programme</em>. Cardiff, Wales: International Baccalaureate Organization (UK) Ltd.</li>
+      <li>International Baccalaureate. (2017). <em>Middle Years Programme Assessment procedures 2018</em>. Geneva, Switzerland: International Baccalaureate Organization.</li>
+      <li>International Baccalaureate. (2014, updated 2022). <em>MYP: From principles into practice</em>. Geneva, Switzerland: International Baccalaureate Organization.</li>
+      <li>International Baccalaureate. (2018, updated 2019). <em>Programme standards and practices</em>. Cardiff, Wales: International Baccalaureate Organization (UK) Ltd.</li>
+      <li>International Baccalaureate. (2017). <em>The IB learner profile</em>. Geneva, Switzerland: International Baccalaureate Organization.</li>
+      <li>SSIS Team. "IB vs AP: What Are The Differences?" Saigon South International School, October 3, 2025.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Susan Chapman - IBEC Portfolio 2026
+</footer>
+
+<script>
+function closeNav() {
+  document.querySelector('.nav-links').classList.remove('open');
+}
+</script>
+
+</body>
+</html>
